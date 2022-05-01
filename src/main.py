@@ -1,5 +1,5 @@
-from area_codes import area_codes
 from string import ascii_lowercase as letters
+from area_codes import area_codes
 from dvla import vehicle_info
 from twitter import twitter_client, tweet
 

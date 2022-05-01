@@ -51,5 +51,5 @@ def tweet(twt, dvla, plate):
     # No tax or MOT
     elif not tax and not mot:
         tweet_text += " has no road tax or valid MOT!"
-        
+
     twt.create_tweet(text=tweet_text)
