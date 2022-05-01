@@ -1,6 +1,6 @@
-import tweepy
 import os
 import random
+import tweepy
 from dvla import is_taxed, has_MOT
 
 def twitter_client():
@@ -42,11 +42,8 @@ def tweet(twt, dvla, plate):
     tax = is_taxed(dvla)
     mot = has_MOT(dvla)
 
-    # Tax and MOT
-    if tax and mot:
-        return
     # Tax but no MOT
-    elif tax and not mot:
+    if tax and not mot:
         tweet_text += " has no valid MOT!"
     # No tax but MOT
     elif not tax and mot:

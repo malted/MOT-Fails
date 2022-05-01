@@ -4,19 +4,15 @@ from dvla import vehicle_info
 from twitter import twitter_client, tweet
 
 def get_stored_plate_count():
-    with open("../last_plate.txt", "r") as f:
+    with open("../last_plate.txt", "r", encoding="utf8") as f:
         return int(f.read())
 
 def inc_stored_plate_count():
-    stored_count = None
+    with open("../last_plate.txt", "r", encoding="utf8") as read_f:
+        stored_count = read_f.read()
 
-    read_f = open("../last_plate.txt", "r")
-    stored_count = read_f.read()
-    read_f.close()
-
-    write_f = open("../last_plate.txt", "w")
-    write_f.write(str(int(stored_count) + 1))
-    write_f.close()
+    with open("../last_plate.txt", "w", encoding="utf8") as write_f:
+        write_f.write(str(int(stored_count) + 1))
 
 def handle_plate(client, first, second, year, r1, r2, r3):
     plate = first + second + str(year).zfill(2) + ' ' +\
@@ -27,12 +23,12 @@ def handle_plate(client, first, second, year, r1, r2, r3):
 
     if response.status_code == 404:
         print(f"{get_stored_plate_count()} Invalid: {plate}")
-        with open("../invalid.txt", "a+") as f:
-            f.write(f"{plate}\n")
+        with open("../invalid.txt", "a+", encoding="utf8") as invalid_f:
+            invalid_f.write(f"{plate}\n")
     elif response.status_code == 200:
         print(f"{get_stored_plate_count()} Valid: {plate}")
-        with open("../valid.txt", "a+") as f:
-            f.write(f"{plate}\n")
+        with open("../valid.txt", "a+", encoding="utf8") as valid_f:
+            valid_f.write(f"{plate}\n")
         tweet(client, info, plate)
 
 

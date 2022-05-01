@@ -1,5 +1,5 @@
-import requests
 import os
+import requests
 
 def is_taxed(dvla_info):
     return dvla_info["taxStatus"] == "Taxed"
