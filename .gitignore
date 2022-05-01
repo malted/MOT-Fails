@@ -1,2 +1,6 @@
 /.venv/
+__pycache__/
 /setenv.sh
+/last_plate.txt
+/valid.txt
+/invalid.txt
