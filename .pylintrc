@@ -3,4 +3,5 @@ disable=missing-module-docstring,
         missing-function-docstring,
         invalid-name,
         too-many-arguments,
-        too-many-nested-blocks
+        too-many-nested-blocks,
+        import-error
