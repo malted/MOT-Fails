@@ -33,7 +33,7 @@ def random_starter():
 def tweet(twt, dvla, plate):
     starter = random_starter()
     colour = dvla["colour"]
-    year = dvla["yearOfManufacture"]
+    year = str(dvla["yearOfManufacture"])
     make = dvla["make"]
 
     tweet_text = \
@@ -51,5 +51,8 @@ def tweet(twt, dvla, plate):
     # No tax or MOT
     elif not tax and not mot:
         tweet_text += " has no road tax or valid MOT!"
+    # Tax and MOT
+    else:
+        return
 
     twt.create_tweet(text=tweet_text)
