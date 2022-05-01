@@ -1,4 +1,5 @@
 from string import ascii_lowercase as letters
+import sys
 from area_codes import area_codes
 from dvla import vehicle_info
 from twitter import twitter_client, tweet
@@ -32,7 +33,7 @@ def handle_plate(client, first, second, year, r1, r2, r3):
         tweet(client, info, plate)
     else:
         print(f"{response.status_code} {info}")
-        exit(1)
+        sys.exit(1)
 
 
 def main():
