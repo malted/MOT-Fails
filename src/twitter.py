@@ -24,7 +24,7 @@ def random_starter():
         "News just in.",
         "Another one?",
         "Terrible. Simply terrible.",
-        "I'm distraught."
+        "I'm distraught.",
         "What an absolute travesty.",
         "Someone call the plod!",
     ])
@@ -37,7 +37,7 @@ def tweet(twt, dvla, plate):
     make = dvla["make"]
 
     tweet_text = \
-        starter + " This " + colour + ' ' + year + ' ' + make + ' ' + plate
+        starter + " This " + colour + ' ' + year + ' ' + make + " with registration " + plate
 
     tax = is_taxed(dvla)
     mot = has_MOT(dvla)
