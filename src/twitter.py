@@ -15,29 +15,31 @@ def twitter_client():
 def random_starter():
     return random.choice([
         "SMH.",
-        "Oh dear.",
-        "Big bother.",
-        "Oh man.",
-        "Crime car alert!",
-        "Look at this dirty criminal.",
-        "Keep your eyes peeled!",
-        "News just in.",
-        "Another one?",
-        "Terrible. Simply terrible.",
+        "oh dear.",
+        "big bother.",
+        "oh man.",
+        "crime car alert!",
+        "look at this dirty criminal.",
+        "keep your eyes peeled!",
+        "news just in.",
+        "another one?",
+        "terrible. Simply terrible.",
         "I'm distraught.",
-        "What an absolute travesty.",
-        "Someone call the plod!",
+        "what an absolute travesty.",
+        "get the plod on this.",
     ])
 
 
-def tweet(twt, dvla, plate):
+def tweet(twt, dvla, plate, police_twt):
     starter = random_starter()
     colour = dvla["colour"]
     year = str(dvla["yearOfManufacture"])
     make = dvla["make"]
 
     tweet_text = \
-        starter + " This " + colour + ' ' + year + ' ' + make + " with registration " + plate
+        '@' + police_twt + ' ' + starter + \
+        " This " + colour.lower() + ' ' + year + ' ' + make + \
+        " with registration " + plate
 
     tax = is_taxed(dvla)
     mot = has_MOT(dvla)

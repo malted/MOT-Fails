@@ -15,7 +15,7 @@ def inc_stored_plate_count():
     with open("../last_plate.txt", "w", encoding="utf8") as write_f:
         write_f.write(str(int(stored_count) + 1))
 
-def handle_plate(client, first, second, year, r1, r2, r3):
+def handle_plate(client, first, second, year, r1, r2, r3, police_handle):
     plate = first + second + str(year).zfill(2) + ' ' +\
         r1.upper() + r2.upper() + r3.upper()
 
@@ -30,7 +30,7 @@ def handle_plate(client, first, second, year, r1, r2, r3):
         print(f"{get_stored_plate_count()} Valid: {plate}")
         with open("../valid.txt", "a+", encoding="utf8") as valid_f:
             valid_f.write(f"{plate}\n")
-        tweet(client, info, plate)
+        tweet(client, info, plate, police_handle)
     else:
         print(f"{response.status_code} {info}")
         sys.exit(1)
@@ -55,7 +55,7 @@ def main():
                                 print("Skipping plate: " + str(current_count))
                             elif current_count > get_stored_plate_count():
                                 handle_plate(
-                                    client, first, second, year, r1, r2, r3
+                                    client, first, second[0], year, r1, r2, r3, second[1]
                                 )
                                 inc_stored_plate_count()
 
