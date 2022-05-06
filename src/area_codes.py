@@ -1,7 +1,3 @@
-from calendar import c
-from tkinter import E
-
-
 area_codes = {
     "A": [
         ["A", "PboroCops"],
